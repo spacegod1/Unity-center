@@ -53,7 +53,7 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative flex min-h-[400px] items-center overflow-hidden bg-dark sm:min-h-[500px] lg:min-h-[600px]">
           <Image
-            src="/images/home-hero.png"
+            src="/images/unity_centre_entrance_1.jpeg"
             alt=""
             fill
             className="object-cover"
@@ -96,7 +96,7 @@ export default function HomePage() {
         </section>
 
         {/* Stats Section */}
-        <section className="relative z-20 mx-auto mt-8 max-w-[1280px] px-4 sm:mt-0 sm:-mt-16 sm:px-6 lg:px-8">
+        <section className="relative z-20 mx-auto mt-8 max-w-[1280px] px-4 sm:-mt-16 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
             {stats.map((stat) => (
               <div

@@ -1,48 +1,35 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight } from "lucide-react";
-
-const filterTags = [
-  { label: "All Activities", active: true },
-  { label: "Health & Wellbeing" },
-  { label: "Education" },
-  { label: "Sports" },
-  { label: "Cultural Programs" },
-];
 
 const activities = [
   {
-    tag: "HEALTH",
-    tagColor: "#22C55E",
-    image: "/images/activity-health.png",
+    image: "/images/exercise.jpeg",
     title: "Health & Wellbeing",
     description:
       "Yoga sessions and mental health workshops for all ages to build a resilient community.",
+    position: "object-center",
   },
   {
-    tag: "EDUCATION",
-    tagColor: "#060B9A",
-    image: "/images/activity-education.png",
+    image: "/images/computer_literacy.jpeg",
     title: "Computer Literacy",
     description:
       "Essential tech support, senior digital inclusion, and job seeking assistance.",
+    position: "object-center",
   },
   {
-    tag: "SPORTS",
-    tagColor: "#F97316",
-    image: "/images/activity-sports.png",
+    image: "/images/dart.jpeg",
     title: "Tennis & Darts Club",
     description:
       "Join our local sports community for weekly matches and tournament play.",
+    position: "object-[50%_30%]",
   },
   {
-    tag: "CULTURAL",
-    tagColor: "#A855F7",
-    image: "/images/activity-cultural.png",
+    image: "/images/unity_centre_hall_1.jpeg",
     title: "Cultural Programs",
     description:
       "Heritage events, community meals, and celebrations of our diverse background.",
+    position: "object-center",
   },
 ];
 
@@ -88,32 +75,11 @@ export default function ActivitiesPage() {
             </div>
           </section>
 
-          {/* Filter Tags */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            {filterTags.map((tag) => (
-              <button
-                key={tag.label}
-                className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
-                  tag.active
-                    ? "bg-primary text-white"
-                    : "border border-border bg-white text-heading hover:border-primary hover:text-primary"
-                }`}
-              >
-                {tag.label}
-              </button>
-            ))}
-          </div>
-
           {/* Activities Grid */}
           <section>
-            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <h2 className="text-[24px] font-black text-heading sm:text-[30px]">
-                Current Programs
-              </h2>
-              <span className="w-fit rounded-full bg-primary-light px-4 py-1.5 text-xs font-bold text-primary">
-                12 Active Programs
-              </span>
-            </div>
+            <h2 className="mb-8 text-[24px] font-black text-heading sm:text-[30px]">
+              Our Programs
+            </h2>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {activities.map((item) => (
@@ -121,19 +87,13 @@ export default function ActivitiesPage() {
                   key={item.title}
                   className="overflow-hidden rounded-xl border border-border bg-white shadow-sm"
                 >
-                  <div className="relative h-48">
+                  <div className="relative h-48 sm:h-64 lg:h-72">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover"
+                      className={`object-cover ${item.position}`}
                     />
-                    <span
-                      className="absolute left-4 top-4 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white"
-                      style={{ backgroundColor: item.tagColor }}
-                    >
-                      {item.tag}
-                    </span>
                   </div>
                   <div className="p-6">
                     <h3 className="text-lg font-bold text-heading">
@@ -142,13 +102,6 @@ export default function ActivitiesPage() {
                     <p className="mt-2 text-sm leading-relaxed text-body">
                       {item.description}
                     </p>
-                    <a
-                      href="#"
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
                   </div>
                 </div>
               ))}
@@ -156,27 +109,31 @@ export default function ActivitiesPage() {
           </section>
 
           {/* Organisations */}
-          <section className="rounded-xl bg-[#EEEFFF] px-6 py-10 sm:px-8 sm:py-14 lg:px-12">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-[24px] font-black text-heading sm:text-[30px]">
-                Organisations Using the Center
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-body">
-                We are proud to host and partner with local NGOs and community
-                groups that make South London a better place for everyone.
-              </p>
-            </div>
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {organisations.map((org) => (
-                <div
-                  key={org}
-                  className="flex items-center justify-center rounded-lg bg-white px-6 py-5 shadow-sm"
-                >
-                  <span className="text-center text-base font-black text-[#94A3B8] sm:text-xl">
+          <section className="rounded-xl border border-border bg-white px-6 py-10 sm:px-8 sm:py-14 lg:px-12">
+            <div className="flex flex-col items-center gap-8 lg:flex-row lg:gap-12">
+              <div className="shrink-0 text-center lg:max-w-[280px] lg:text-left">
+                <h2 className="text-[22px] font-black leading-tight text-heading sm:text-[26px]">
+                  Organisations Using&nbsp;the&nbsp;Centre
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-body">
+                  We proudly host and partner with local NGOs and community
+                  groups across South London.
+                </p>
+              </div>
+
+              <div className="hidden h-20 w-px bg-border lg:block" />
+
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4 lg:justify-start">
+                {organisations.map((org, i) => (
+                  <span
+                    key={org}
+                    className="inline-flex items-center gap-2 text-sm font-bold tracking-wide text-heading sm:text-base"
+                  >
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
                     {org}
                   </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
         </div>

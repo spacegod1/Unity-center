@@ -62,7 +62,7 @@ const spaces = [
 export default function VenueHirePage() {
   return (
     <>
-      <Header activePage="Projects" />
+      <Header activePage="Hiring" />
       <main className="mx-auto w-full max-w-[1280px] flex-1 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-16 py-10">
           {/* Hero */}

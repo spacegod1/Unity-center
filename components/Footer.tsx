@@ -17,9 +17,9 @@ export default function Footer() {
               </h4>
             </div>
             <p className="text-center text-xs leading-relaxed text-footer-text md:text-left">
-              123 South London Way,
+              2-4 Ravenstone Street
               <br />
-              SE1 1AB, London, UK
+              Balham, London, SW12 9SS
             </p>
           </div>
 

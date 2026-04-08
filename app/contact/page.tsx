@@ -39,8 +39,8 @@ export default function ContactPage() {
                     icon={<MapPin className="h-5 w-5 text-primary" />}
                     label="Our Location"
                     lines={[
-                      "Unity Centre, Balham High Road",
-                      "London, SW12 9SS",
+                      "2-4 Ravenstone Street",
+                      "Balham, London, SW12 9SS",
                     ]}
                   />
                   <InfoBlock
@@ -72,7 +72,7 @@ export default function ContactPage() {
                     <div className="flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 shadow-md">
                       <MapPin className="h-4 w-4 text-primary" />
                       <span className="text-sm font-semibold text-heading">
-                        Unity Centre, SW12 9SS
+                        2-4 Ravenstone Street, SW12 9SS
                       </span>
                     </div>
                   </div>
