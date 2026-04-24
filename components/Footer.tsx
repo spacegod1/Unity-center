@@ -39,10 +39,16 @@ export default function Footer() {
                 info@unitycentresl.org.uk
               </Link>
               <Link
-                href="tel:+442079460000"
+                href="tel:+447921655533"
                 className="text-xs font-bold text-dark hover:text-primary"
               >
-                +44 20 7946 0000
+                +7921 655533
+              </Link>
+              <Link
+                href="tel:+447868239278"
+                className="text-xs font-bold text-dark hover:text-primary"
+              >
+                +7868 239278
               </Link>
             </div>
           </div>
@@ -69,8 +75,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-center gap-4 border-t border-border py-6 md:flex-row md:justify-between">
           <p className="text-center text-xs font-medium tracking-wide text-footer-text md:text-left">
-            © 2024 Unity Centre of South London. Registered Charity No.
-            12345678.
+            © 2024 Unity Centre of South London.
           </p>
           <div className="flex items-center gap-6">
             {["Privacy Policy", "Terms of Service", "Safeguarding"].map(

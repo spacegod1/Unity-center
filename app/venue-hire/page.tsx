@@ -1,63 +1,10 @@
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {
-  ArrowRight,
-  Wifi,
-  Monitor,
-  Accessibility,
-  Tv,
-  Coffee,
-  Printer,
-  Lock,
-  Zap,
-  UtensilsCrossed,
-  Users,
-  Shield,
-  Mail,
-} from "lucide-react";
-
-const spaces = [
-  {
-    title: "The Grand Hall",
-    capacity: "Capacity: 120",
-    price: "From £45/hr",
-    description:
-      "Perfect for weddings, community workshops, and large-scale presentations. Features integrated PA system and stage area.",
-    features: [
-      { label: "High-speed Wi-Fi", Icon: Wifi },
-      { label: "AV System", Icon: Monitor },
-      { label: "Full Access", Icon: Accessibility },
-    ],
-    image: "/images/venue-grand-hall.png",
-  },
-  {
-    title: "The Executive Suite",
-    capacity: "Capacity: 12",
-    price: "From £25/hr",
-    description:
-      "A professional environment for board meetings, interviews, or small team strategy sessions.",
-    features: [
-      { label: '65" Screen', Icon: Tv },
-      { label: "Tea & Coffee", Icon: Coffee },
-      { label: "Printing", Icon: Printer },
-    ],
-    image: "/images/venue-executive-suite.png",
-  },
-  {
-    title: "Creative Studio Pods",
-    capacity: "Day Pass / Monthly",
-    price: "From £15/day",
-    description:
-      "Individual desks or semi-private pods for freelancers, remote workers, and local NGOs.",
-    features: [
-      { label: "Private Lockers", Icon: Lock },
-      { label: "High-Speed Fiber", Icon: Zap },
-      { label: "Shared Kitchen", Icon: UtensilsCrossed },
-    ],
-    image: "/images/venue-studio-pods.png",
-  },
-];
+import SpaceCarousel from "@/components/SpaceCarousel";
+import BookingForm from "@/components/BookingForm";
+import BookingModal from "@/components/BookingModal";
+import { ArrowRight, Wifi, Monitor, Accessibility, Users } from "lucide-react";
 
 export default function VenueHirePage() {
   return (
@@ -68,7 +15,7 @@ export default function VenueHirePage() {
           {/* Hero */}
           <section className="relative overflow-hidden rounded-xl bg-heading px-6 py-12 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
             <Image
-              src="/images/venue-hero.png"
+              src="/images/unity_centre_entrance_1.jpeg"
               alt=""
               fill
               className="object-cover opacity-50"
@@ -99,186 +46,100 @@ export default function VenueHirePage() {
             </div>
           </section>
 
-          {/* Two-column layout */}
+          {/* Main Hall + Sidebar Booking */}
           <div id="spaces" className="grid grid-cols-1 gap-8 lg:grid-cols-5">
-            {/* Left: Space Listings */}
+            {/* Left: Main Hall */}
             <div className="flex flex-col gap-6 lg:col-span-3">
               <div className="flex items-center gap-3">
                 <Users className="h-6 w-6 text-primary" />
-                <h2 className="text-2xl font-bold text-heading">
-                  Our Available Spaces
-                </h2>
+                <h2 className="text-2xl font-bold text-heading">Our Spaces</h2>
               </div>
 
-              {spaces.map((space) => (
-                <div
-                  key={space.title}
-                  className="overflow-hidden rounded-xl border border-border bg-white shadow-sm"
-                >
-                  <div className="relative h-36 sm:h-44">
-                    <Image
-                      src={space.image}
-                      alt={space.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <span className="absolute bottom-3 right-3 z-10 rounded-full bg-heading/70 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
-                      {space.capacity}
-                    </span>
+              {/* The Grand Hall */}
+              <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
+                  <div className="sm:min-h-[320px]">
+                    <SpaceCarousel />
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-baseline justify-between">
-                      <h3 className="text-lg font-bold text-heading">
-                        {space.title}
-                      </h3>
-                      <span className="text-sm font-bold text-primary">
-                        {space.price}
-                      </span>
-                    </div>
+                  <div className="flex flex-col justify-center p-6 sm:p-8">
+                    <span className="inline-block w-fit rounded-full bg-primary-light px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                      Available Now
+                    </span>
+                    <h3 className="mt-3 text-xl font-bold text-heading">
+                      The Grand Hall
+                    </h3>
                     <p className="mt-2 text-sm leading-relaxed text-body">
-                      {space.description}
+                      Our main hall is perfect for weddings, community workshops,
+                      and large-scale presentations. Features an integrated PA
+                      system, stage area, tables and seating for up to 120 guests.
                     </p>
+                    <div className="mt-4 rounded-lg bg-[#F1F5F9] px-4 py-3">
+                      <p className="text-lg font-black text-heading">
+                        From £55<span className="text-sm font-semibold text-body">/hr</span>
+                      </p>
+                      <p className="mt-1 text-xs text-body-light">
+                        Capacity: 60 guests
+                      </p>
+                    </div>
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {space.features.map((feat) => (
-                        <span
-                          key={feat.label}
-                          className="inline-flex items-center gap-1.5 rounded bg-[#F1F5F9] px-3 py-1.5 text-xs font-medium text-heading"
-                        >
-                          <feat.Icon className="h-3.5 w-3.5" />
-                          {feat.label}
-                        </span>
-                      ))}
+                      <span className="inline-flex items-center gap-1.5 rounded bg-[#F1F5F9] px-3 py-1.5 text-xs font-medium text-heading">
+                        <Wifi className="h-3.5 w-3.5" /> Wi-Fi
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded bg-[#F1F5F9] px-3 py-1.5 text-xs font-medium text-heading">
+                        <Monitor className="h-3.5 w-3.5" /> AV System
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded bg-[#F1F5F9] px-3 py-1.5 text-xs font-medium text-heading">
+                        <Accessibility className="h-3.5 w-3.5" /> Accessible
+                      </span>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Office Space */}
+              <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2">
+                  <div className="relative sm:min-h-[280px]">
+                    <video
+                      src="/images/unity_office.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center p-6 sm:p-8">
+                    <span className="inline-block w-fit rounded-full bg-primary-light px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-primary">
+                      Available Now
+                    </span>
+                    <h3 className="mt-3 text-xl font-bold text-heading">
+                      Private Office
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-body">
+                      A self-contained private office ideal for small teams,
+                      consultants, or community organisations looking for a
+                      permanent base in Balham.
+                    </p>
+                    <div className="mt-4 rounded-lg bg-[#F1F5F9] px-4 py-3">
+                      <p className="text-lg font-black text-heading">
+                        £300<span className="text-sm font-semibold text-body">/month</span>
+                      </p>
+                      <p className="mt-1 text-xs text-body-light">
+                        Available for inspection any time
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Right: Booking Enquiry Form */}
-            <div className="lg:col-span-2">
+            {/* Right: Booking Form — desktop only */}
+            <div className="hidden lg:col-span-2 lg:block">
               <div className="overflow-hidden rounded-xl border border-border bg-white shadow-lg lg:sticky lg:top-24">
                 <div className="h-1.5 bg-primary" />
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-heading">
-                    Booking Enquiry
-                  </h3>
-                  <p className="mt-1 text-sm text-body-light">
-                    Response within 24 working hours
-                  </p>
-
-                  <form className="mt-6 flex flex-col gap-4">
-                    <div>
-                      <label className="mb-1.5 block text-xs font-semibold text-heading">
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your full name"
-                        className="w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors placeholder:text-body-light focus:border-primary"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      <div>
-                        <label className="mb-1.5 block text-xs font-semibold text-heading">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="you@email.com"
-                          className="w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors placeholder:text-body-light focus:border-primary"
-                        />
-                      </div>
-                      <div>
-                        <label className="mb-1.5 block text-xs font-semibold text-heading">
-                          Phone
-                        </label>
-                        <input
-                          type="tel"
-                          placeholder="+44 ..."
-                          className="w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors placeholder:text-body-light focus:border-primary"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="mb-1.5 block text-xs font-semibold text-heading">
-                        Preferred Space
-                      </label>
-                      <select className="w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors focus:border-primary">
-                        <option value="">Select a space</option>
-                        <option>The Grand Hall</option>
-                        <option>The Executive Suite</option>
-                        <option>Creative Studio Pods</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="mb-1.5 block text-xs font-semibold text-heading">
-                        Booking Date
-                      </label>
-                      <input
-                        type="date"
-                        className="w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors focus:border-primary"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="mb-1.5 block text-xs font-semibold text-heading">
-                        Attendance
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Expected number of attendees"
-                        min={1}
-                        className="w-full rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors placeholder:text-body-light focus:border-primary"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="mb-1.5 block text-xs font-semibold text-heading">
-                        Event Details
-                      </label>
-                      <textarea
-                        rows={3}
-                        placeholder="Tell us about your event..."
-                        className="w-full resize-none rounded-lg border border-border bg-white px-4 py-2.5 text-sm text-heading outline-none transition-colors placeholder:text-body-light focus:border-primary"
-                      />
-                    </div>
-
-                    <label className="flex items-start gap-2.5 text-sm text-body">
-                      <input
-                        type="checkbox"
-                        className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
-                      />
-                      <span className="leading-snug">
-                        Apply for NGO/Community discounted rate (Eligibility
-                        proof required)
-                      </span>
-                    </label>
-
-                    <button
-                      type="submit"
-                      className="mt-2 w-full rounded-lg bg-primary py-3 text-sm font-bold uppercase tracking-wide text-white shadow-sm transition-shadow hover:shadow-md"
-                    >
-                      Send Enquiry
-                    </button>
-                  </form>
-
-                  <div className="mt-5 flex items-center justify-center gap-4 border-t border-border pt-5">
-                    <div className="flex items-center gap-1.5 text-xs text-body-light">
-                      <Shield className="h-3.5 w-3.5" />
-                      Secure &amp; Private Data Handling
-                    </div>
-                    <span className="text-border">|</span>
-                    <a
-                      href="#"
-                      className="flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
-                    >
-                      <Mail className="h-3.5 w-3.5" />
-                      Need a custom quote? Contact us
-                    </a>
-                  </div>
+                  <BookingForm />
                 </div>
               </div>
             </div>
@@ -286,6 +147,9 @@ export default function VenueHirePage() {
         </div>
       </main>
       <Footer />
+
+      {/* Mobile: Fixed booking button + modal */}
+      <BookingModal />
     </>
   );
 }

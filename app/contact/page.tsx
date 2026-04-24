@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { MapPin, Clock, Phone, Mail, ChevronDown } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
+import { MapPin, Clock, Phone } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -55,8 +56,9 @@ export default function ContactPage() {
                     icon={<Phone className="h-5 w-5 text-primary" />}
                     label="Phone & Email"
                     lines={[
-                      "+44 20 1234 5678",
-                      "hello@unitycentre.org.uk",
+                      "+7921 655533",
+                      "+7868 239278",
+                      "info@unitycentresl.org.uk",
                     ]}
                   />
                 </div>
@@ -82,72 +84,7 @@ export default function ContactPage() {
 
             {/* Right: Contact Form */}
             <div className="rounded-2xl border border-border bg-white p-8 shadow-sm lg:p-10">
-              <h2 className="text-[30px] font-bold leading-tight text-heading">
-                Send us a Message
-              </h2>
-              <p className="mt-2 text-sm text-body-light">
-                We typically respond within 24 hours. Your details are safe with
-                us.
-              </p>
-
-              <form className="mt-8 flex flex-col gap-5">
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <FormField label="Full Name" name="fullName" type="text" placeholder="John Doe" />
-                  <FormField label="Email Address" name="email" type="email" placeholder="john@example.com" />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="subject" className="text-sm font-semibold text-heading">
-                    Subject
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="subject"
-                      name="subject"
-                      defaultValue="general"
-                      className="w-full appearance-none rounded-xl border border-border bg-page-bg px-4 py-3 pr-10 text-sm text-heading outline-none transition focus:border-primary focus:ring-2 focus:ring-primary-light"
-                    >
-                      <option value="general">General Inquiry</option>
-                      <option value="volunteer">Volunteering</option>
-                      <option value="support">Support Request</option>
-                      <option value="partnership">Partnership</option>
-                    </select>
-                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-body-light" />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="message" className="text-sm font-semibold text-heading">
-                    Your Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Tell us how we can help…"
-                    className="w-full resize-none rounded-xl border border-border bg-page-bg px-4 py-3 text-sm text-heading outline-none transition placeholder:text-body-light focus:border-primary focus:ring-2 focus:ring-primary-light"
-                  />
-                </div>
-
-                <label className="flex items-start gap-3 text-sm text-body">
-                  <input
-                    type="checkbox"
-                    name="privacy"
-                    className="mt-0.5 h-4 w-4 rounded border-border text-primary accent-primary"
-                  />
-                  <span>
-                    I agree to the privacy policy and data protection terms.
-                  </span>
-                </label>
-
-                <button
-                  type="submit"
-                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-base font-bold text-white shadow-sm transition hover:shadow-md"
-                >
-                  <Mail className="h-5 w-5" />
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>
@@ -186,29 +123,3 @@ function InfoBlock({
   );
 }
 
-function FormField({
-  label,
-  name,
-  type,
-  placeholder,
-}: {
-  label: string;
-  name: string;
-  type: string;
-  placeholder: string;
-}) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={name} className="text-sm font-semibold text-heading">
-        {label}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        className="w-full rounded-xl border border-border bg-page-bg px-4 py-3 text-sm text-heading outline-none transition placeholder:text-body-light focus:border-primary focus:ring-2 focus:ring-primary-light"
-      />
-    </div>
-  );
-}

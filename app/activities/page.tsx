@@ -25,10 +25,17 @@ const activities = [
     position: "object-[50%_30%]",
   },
   {
-    image: "/images/unity_centre_hall_1.jpeg",
-    title: "Cultural Programs",
+    image: "/images/unity_centre_cultural.jpeg",
+    title: "Older Peoples Project",
     description:
-      "Heritage events, community meals, and celebrations of our diverse background.",
+      "Run by Positive Network — heritage crafts, community gatherings, and support activities for older members of our community.",
+    position: "object-center",
+  },
+  {
+    image: "/images/food_bank.jpeg",
+    title: "Food Bank, Balham",
+    description:
+      "Run by Positive Network — providing fresh produce and essential food supplies to families and individuals across South London.",
     position: "object-center",
   },
 ];

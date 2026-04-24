@@ -53,16 +53,13 @@ export default function Header({ activePage = "Home" }: HeaderProps) {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-4 lg:flex">
+          <div className="hidden items-center lg:flex">
             <Link
               href="/donate"
               className="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white shadow-sm transition-shadow hover:shadow-md"
             >
               Donate Now
             </Link>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary-border bg-slate-200">
-              <div className="h-full w-full overflow-hidden rounded-full bg-slate-200" />
-            </div>
           </div>
 
           <button
